@@ -6,24 +6,38 @@
 // All hyphens (-) should be converted to underscores (_).
 
 function toConsonantCase(str) {
-  console.log(str);
-  // all consonants to uppercase
-  const up = str.toUpperCase();
-  console.log(up);
-  // all vowels to lowercase
-  const regex = /aeiou/gi;
-  // put into array
-  const arr = [];
-  for (let i = 0; i < up.length; i++) {
-    arr.push(up[i]);
-  }
-  console.log(arr);
-  const lower = arr.map((letter) => {
-    return regex.test(letter).toLowerCase();
+  // convert - to _
+  let result = str.replace(/-/g, '_');
+
+  // use regex to match EVERY letter
+
+  return result.replace(/[a-z]/gi, (char) => {
+    // check if it's a vowel (no 'g' flag needed here)
+    if (/[aeiou]/i.test(char)) {
+      return char.toLowerCase();
+    } else {
+      return char.toUpperCase();
+    }
   });
 
-  console.log(lower);
+  // console.log(str)
+  // all consonants to uppercase
+  // const up = str.toUpperCase()
+  // console.log(up)
+  // all vowels to lowercase
+  // const regex = /aeiou/gi
+  // put into array
+  // const arr = [];
+  // for (let i = 0; i < up.length; i++) {
+  //  arr.push(up[i])
+  //}
+  // console.log(arr)
+  // const lower = arr.map(letter => {
+  //  return regex.test(letter).toLowerCase()
+  // })
+
+  // console.log(lower)
 
   // all hyphens to underscores
-  return str;
+  //  return str;
 }
